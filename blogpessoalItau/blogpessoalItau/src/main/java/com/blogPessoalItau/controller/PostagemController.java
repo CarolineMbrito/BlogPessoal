@@ -1,7 +1,6 @@
 package com.blogPessoalItau.controller;
 
 import com.blogPessoalItau.model.Postagem;
-import com.blogPessoalItau.model.PostagemRepository;
 import com.blogPessoalItau.repository.PostagemRespository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,8 +12,6 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
-
 @RestController
 @RequestMapping("/postagens")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -23,10 +20,11 @@ public class PostagemController {
     @Autowired
     private PostagemRespository postagemRespository;
     @Autowired
-    private PostagemRepository postagemRepository;
+    private PostagemRespository postagemRepository;
 
     @GetMapping
     public ResponseEntity<List<Postagem>> getAll(){
+
         return ResponseEntity.ok(postagemRespository.findAll());
     }
     @GetMapping("/titulo/{titulo}")
